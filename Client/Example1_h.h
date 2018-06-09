@@ -3,16 +3,16 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 8.01.0622 */
+/* File created by MIDL compiler version 8.01.0622 */
 /* at Mon Jan 18 19:14:07 2038
- */
+*/
 /* Compiler settings for Example1.idl:
-    Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0622 
-    protocol : all , ms_ext, app_config, c_ext, robust
-    error checks: allocation ref bounds_check enum stub_data 
-    VC __declspec() decoration level: 
-         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
-         DECLSPEC_UUID(), MIDL_INTERFACE()
+Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0622
+protocol : all , ms_ext, app_config, c_ext, robust
+error checks: allocation ref bounds_check enum stub_data
+VC __declspec() decoration level:
+__declspec(uuid()), __declspec(selectany), __declspec(novtable)
+DECLSPEC_UUID(), MIDL_INTERFACE()
 */
 /* @@MIDL_FILE_HEADING(  ) */
 
@@ -38,37 +38,50 @@
 #pragma once
 #endif
 
-/* Forward Declarations */ 
+/* Forward Declarations */
 
 /* header files for imported files */
-#include "oaidl.h"
-#include "ocidl.h"
+//#include "oaidl.h"
+//#include "ocidl.h"
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif 
 
 
 #ifndef __Example1_INTERFACE_DEFINED__
 #define __Example1_INTERFACE_DEFINED__
 
-/* interface Example1 */
-/* [implicit_handle][version][uuid] */ 
+	/* interface Example1 */
+	/* [implicit_handle][version][uuid] */
 
-void Output( 
-    /* [string][in] */ const unsigned char *szOutput);
+	/* interface ContextExample */
+	/* [explicit_handle][version][uuid] */
+
+	typedef /* [context_handle] */ void *CONTEXT_HANDLE;
+
+	CONTEXT_HANDLE Open(
+		/* [in] */ handle_t hBinding,
+		/* [string][in] */ const char *szString);
+
+	void Output(
+		/* [in] */ CONTEXT_HANDLE hContext);
+
+	void Close(
+		/* [out][in] */ CONTEXT_HANDLE *phContext);
+
+	//extern handle_t hExample1Binding;
 
 
-extern handle_t hExample1Binding;
-
-
-extern RPC_IF_HANDLE Example1_v1_0_c_ifspec;
-extern RPC_IF_HANDLE Example1_v1_0_s_ifspec;
+	extern RPC_IF_HANDLE Example1_v1_0_c_ifspec;
+	extern RPC_IF_HANDLE Example1_v1_0_s_ifspec;
 #endif /* __Example1_INTERFACE_DEFINED__ */
 
-/* Additional Prototypes for ALL interfaces */
+	/* Additional Prototypes for ALL interfaces */
 
-/* end of Additional Prototypes */
+	void __RPC_USER CONTEXT_HANDLE_rundown(CONTEXT_HANDLE);
+
+	/* end of Additional Prototypes */
 
 #ifdef __cplusplus
 }
